@@ -38,11 +38,14 @@ var generatePassword = function () {
     let passCasePlus = '';
     if(passLowercase){
         passCasePlus += lowerCase;
-    } else if(passUppercase) {
+    }
+    if(passUppercase) {
         passCasePlus += upperCase;
-    } else if(passNumeric) {
+    }
+    if(passNumeric) {
         passCasePlus += numberCase;
-    } else if(passSymbol) {
+    }
+    if(passSymbol) {
         passCasePlus += symbolCase;
     }
 
