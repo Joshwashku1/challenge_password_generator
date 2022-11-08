@@ -12,9 +12,10 @@ function writePassword() {
 
 // Algorithm to generate password
 var generatePassword = function () {
-    // var passLength = window.prompt("Type a number to generate the length of the password.");
-
+    
+    // Grab the number of password length.
     var aNumber = Number(window.prompt("Type a number to generate the length of the password.", ""));
+
     // Checks to see if passLength is a number, then either moves on to the next prompt, or
     // sends a window alert to ensure the user types in a valid number.
     if(isNaN(aNumber)){
@@ -22,7 +23,27 @@ var generatePassword = function () {
         return;
     }
 
-    // var passLowercase = window.prompt("Would you like to include ")
+    var passLowercase = window.confirm("Would you like your password to have a lowercase letter?");
+    var passUppercase = window.confirm("Would you like your password to have an uppercase letter?");
+    var passNumeric = window.confirm("Would you like your password to have a number?");
+    var passSymbol = window.confirm("Would you like your password to have any symbols?");
+
+    const lowerCase = 'abcdefghijklmnopqrstuvwxyz';
+    const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const numberCase = '0123456789';
+    const symbolCase = '!@#$%^&*()';
+
+    let result = '';
+
+    for(i=0;i<aNumber;i++){
+        if(passLowercase && passUppercase && passNumeric && passSymbol){
+            const allCase = lowerCase + upperCase + numberCase + symbolCase;
+            result += allCase.charAt(Math.floor(Math.random() * allCase.length));
+        } 
+    }
+
+    return result;
+    
 
     
 
