@@ -23,6 +23,7 @@ var generatePassword = function () {
         return;
     }
 
+    // Prompts to specify the users preference for characters
     var passLowercase = window.confirm("Would you like your password to have a lowercase letter?");
     var passUppercase = window.confirm("Would you like your password to have an uppercase letter?");
     var passNumeric = window.confirm("Would you like your password to have a number?");
@@ -33,6 +34,7 @@ var generatePassword = function () {
     const numberCase = '0123456789';
     const symbolCase = '!@#$%^&*()';
 
+    // Adds the characters to which the user selects
     let passCasePlus = '';
     if(passLowercase){
         passCasePlus += lowerCase;
@@ -47,9 +49,12 @@ var generatePassword = function () {
     let result = '';
 
     for(i=0;i<aNumber;i++){
+        // Randomly generates a char from the users specifications and length
+        // while adding the char to result in each iteration. 
         result += passCasePlus.charAt(Math.floor(Math.random() * passCasePlus.length));
     }
 
+    // return all random characters
     return result;
     
 
