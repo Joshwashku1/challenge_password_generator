@@ -33,13 +33,21 @@ var generatePassword = function () {
     const numberCase = '0123456789';
     const symbolCase = '!@#$%^&*()';
 
+    let passCasePlus = '';
+    if(passLowercase){
+        passCasePlus += lowerCase;
+    } else if(passUppercase) {
+        passCasePlus += upperCase;
+    } else if(passNumeric) {
+        passCasePlus += numberCase;
+    } else if(passSymbol) {
+        passCasePlus += symbolCase;
+    }
+
     let result = '';
 
     for(i=0;i<aNumber;i++){
-        if(passLowercase && passUppercase && passNumeric && passSymbol){
-            const allCase = lowerCase + upperCase + numberCase + symbolCase;
-            result += allCase.charAt(Math.floor(Math.random() * allCase.length));
-        } 
+        result += passCasePlus.charAt(Math.floor(Math.random() * passCasePlus.length));
     }
 
     return result;
