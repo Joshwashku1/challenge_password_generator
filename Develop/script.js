@@ -24,8 +24,8 @@ var generatePassword = function () {
     }
 
     // Alert defining the proceeding prompts
-    window.alert("By clicking 'OK', you confirm YES to the following selections. " +
-    "By clicking 'Cancel', you confirm NO to the following selections. " )
+    window.alert("Next you will be prompted with preferences for your password. " +
+    "Please click 'OK' to confirm YES, and 'Cancel' to confirm NO." )
 
     // Prompts to specify the users preference for characters
     var passLowercase = window.confirm("Would you like your password to have a lowercase letter?");
@@ -41,7 +41,10 @@ var generatePassword = function () {
     // Adds the characters to which the user selects
     let passCasePlus = '';
     let atLeastOne = [];
+   
     console.log(atLeastOne);
+    console.log(aNumber);
+ 
 
     if(passLowercase){
         passCasePlus += lowerCase;
@@ -69,7 +72,8 @@ var generatePassword = function () {
     for(i=0;i<aNumber;i++){
 
         var index = Math.floor(Math.random() * atLeastOne.length);
-        if(i<4){
+        //Check to see if the array length exists if it does generate at least one preference
+        if(atLeastOne.length>=i || i === 3 && atLeastOne.length>=1){
             result += atLeastOne[index];
             atLeastOne.splice(index,1);
         } else  {
