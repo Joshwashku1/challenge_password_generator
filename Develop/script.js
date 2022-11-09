@@ -1,12 +1,20 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// Catch an undefine variable to reference if an object is undefined
+var undefinedText = window.undefined;
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  // Checks to see if the return is a resulted string or an undefined result
+  if(password !== undefinedText) {
+    passwordText.value = password;
+  } else {
+    passwordText.value = '';
+  }
 
 }
 
@@ -18,7 +26,7 @@ var generatePassword = function () {
 
     // Checks to see if passLength is a number, then either moves on to the next prompt, or
     // sends a window alert to ensure the user types in a valid number.
-    if(isNaN(aNumber)){
+    if(isNaN(aNumber) || aNumber === 0){
         window.alert("Please type in a number.");
         return;
     }
@@ -72,7 +80,8 @@ var generatePassword = function () {
     for(i=0;i<aNumber;i++){
 
         var index = Math.floor(Math.random() * atLeastOne.length);
-        //Check to see if the array length exists if it does generate at least one preference
+        //Check to see if the array length exists,
+        //if length exists generate the at least one preference criteria
         if(atLeastOne.length>=i || i === 3 && atLeastOne.length>=1){
             result += atLeastOne[index];
             atLeastOne.splice(index,1);
