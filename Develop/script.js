@@ -23,6 +23,10 @@ var generatePassword = function () {
         return;
     }
 
+    // Alert defining the proceeding prompts
+    window.alert("By clicking 'OK', you confirm YES to the following selections. " +
+    "By clicking 'Cancel', you confirm NO to the following selections. " )
+
     // Prompts to specify the users preference for characters
     var passLowercase = window.confirm("Would you like your password to have a lowercase letter?");
     var passUppercase = window.confirm("Would you like your password to have an uppercase letter?");
@@ -36,25 +40,43 @@ var generatePassword = function () {
 
     // Adds the characters to which the user selects
     let passCasePlus = '';
+    let atLeastOne = [];
+    console.log(atLeastOne);
+
     if(passLowercase){
         passCasePlus += lowerCase;
+        atLeastOne.push(lowerCase.charAt(Math.floor(Math.random() * lowerCase.length)));
     }
     if(passUppercase) {
         passCasePlus += upperCase;
+        atLeastOne.push(upperCase.charAt(Math.floor(Math.random() * upperCase.length)));
+
     }
     if(passNumeric) {
         passCasePlus += numberCase;
+        atLeastOne.push(numberCase.charAt(Math.floor(Math.random() * numberCase.length)));
+
     }
     if(passSymbol) {
         passCasePlus += symbolCase;
+        atLeastOne.push(symbolCase.charAt(Math.floor(Math.random() * symbolCase.length)));
+
     }
 
+    
     let result = '';
 
     for(i=0;i<aNumber;i++){
-        // Randomly generates a char from the users specifications and length
-        // while adding the char to result in each iteration. 
-        result += passCasePlus.charAt(Math.floor(Math.random() * passCasePlus.length));
+
+        var index = Math.floor(Math.random() * atLeastOne.length);
+        if(i<4){
+            result += atLeastOne[index];
+            atLeastOne.splice(index,1);
+        } else  {
+            // Randomly generates a char from the users specifications and length
+            // while adding the char to result in each iteration. 
+            result += passCasePlus.charAt(Math.floor(Math.random() * passCasePlus.length));
+        }
     }
 
     // return all random characters
