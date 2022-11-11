@@ -53,7 +53,7 @@ var generatePassword = function () {
     console.log(atLeastOne);
     console.log(aNumber);
  
-
+    // Checks to see if the preference was selected by the user
     if(passLowercase){
         passCasePlus += lowerCase;
         atLeastOne.push(lowerCase.charAt(Math.floor(Math.random() * lowerCase.length)));
@@ -77,6 +77,7 @@ var generatePassword = function () {
     
     let result = '';
 
+    // Random generator for the string result; based on user preferences
     for(i=0;i<aNumber;i++){
 
         var index = Math.floor(Math.random() * atLeastOne.length);
@@ -86,8 +87,7 @@ var generatePassword = function () {
             result += atLeastOne[index];
             atLeastOne.splice(index,1);
         } else  {
-            // Randomly generates a char from the users specifications and length
-            // while adding the char to result in each iteration. 
+            // After at least one preference char is generated randomly generate the rest 
             result += passCasePlus.charAt(Math.floor(Math.random() * passCasePlus.length));
         }
     }
